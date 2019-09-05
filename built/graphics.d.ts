@@ -1,0 +1,196 @@
+import { GraphicalElement, GradientElement } from './base';
+import { Canvas, FilterContainer } from './structures';
+export declare class Rectangle extends GraphicalElement {
+    private width;
+    private height;
+    private x;
+    private y;
+    private rx;
+    private ry;
+    private pathLength;
+    private strokeFill;
+    constructor(startX: number, startY: number, width: number, height: number);
+    setId(id: string): Rectangle;
+    useFilter(filter: FilterContainer, canvas: Canvas): Rectangle;
+    setX(x: number): Rectangle;
+    setY(y: number): Rectangle;
+    setWidth(width: number): Rectangle;
+    setHeight(height: number): Rectangle;
+    setRadiusX(rx: number): Rectangle;
+    setRadiusY(ry: number): Rectangle;
+    setPathLength(pathLength: number): Rectangle;
+    setBorder(color: string | GradientElement, width?: number, opacity?: number, linecap?: "butt" | "round" | "square", linejoin?: "miter" | "round" | "bevel"): Rectangle;
+    setBorderDashing(...values: number[]): Rectangle;
+    setFill(color: string | GradientElement, opacity?: number, fillrule?: "nonzero" | "evenodd"): Rectangle;
+    highestHeight(): number;
+    highestWidth(): number;
+    toXML(): string;
+}
+export declare class Circle extends GraphicalElement {
+    private cx;
+    private cy;
+    private r;
+    private pathLength;
+    private strokeFill;
+    constructor(centerX: number, centerY: number, radius: number);
+    setId(id: string): Circle;
+    useFilter(filter: FilterContainer, canvas: Canvas): Circle;
+    setX(x: number): Circle;
+    setY(y: number): Circle;
+    setRadius(r: number): Circle;
+    setPathLength(pathLength: number): Circle;
+    setBorder(color: string | GradientElement, width?: number, opacity?: number, linecap?: "butt" | "round" | "square", linejoin?: "miter" | "round" | "bevel"): Circle;
+    setBorderDashing(...values: number[]): Circle;
+    setFill(color: string | GradientElement, opacity?: number, fillrule?: "nonzero" | "evenodd"): Circle;
+    highestHeight(): number;
+    highestWidth(): number;
+    toXML(): string;
+}
+export declare class Ellipse extends GraphicalElement {
+    private cx;
+    private cy;
+    private rx;
+    private ry;
+    private pathLength;
+    private strokeFill;
+    constructor(centerX: number, centerY: number, radiusX: number, radiusY: number);
+    useFilter(filter: FilterContainer, canvas: Canvas): Ellipse;
+    setId(id: string): Ellipse;
+    setX(x: number): Ellipse;
+    setY(y: number): Ellipse;
+    setRadiusX(rx: number): Ellipse;
+    setRadiusY(ry: number): Ellipse;
+    setPathLength(pathLength: number): Ellipse;
+    setBorder(color: string | GradientElement, width?: number, opacity?: number, linecap?: "butt" | "round" | "square", linejoin?: "miter" | "round" | "bevel"): Ellipse;
+    setBorderDashing(...values: number[]): Ellipse;
+    setFill(color: string | GradientElement, opacity?: number, fillrule?: "nonzero" | "evenodd"): Ellipse;
+    highestHeight(): number;
+    highestWidth(): number;
+    toXML(): string;
+}
+export declare class Line extends GraphicalElement {
+    private x1;
+    private y1;
+    private x2;
+    private y2;
+    private pathLength;
+    private strokeFill;
+    constructor(startX: number, startY: number, endX: number, endY: number);
+    useFilter(filter: FilterContainer, canvas: Canvas): Line;
+    setId(id: string): Line;
+    setStartX(x1: number): Line;
+    setStartY(y1: number): Line;
+    setEndX(x2: number): Line;
+    setEndY(y2: number): Line;
+    setPathLength(pathLength: number): Line;
+    setBorder(color: string | GradientElement, width?: number, opacity?: number, linecap?: "butt" | "round" | "square", linejoin?: "miter" | "round" | "bevel"): Line;
+    setBorderDashing(...values: number[]): Line;
+    highestHeight(): number;
+    highestWidth(): number;
+    toXML(): string;
+}
+export declare class Polygon extends GraphicalElement {
+    private points;
+    private pathLength;
+    private strokeFill;
+    constructor(x1: number, y1: number, x2: number, y2: number);
+    useFilter(filter: FilterContainer, canvas: Canvas): Polygon;
+    setId(id: string): Polygon;
+    addPoint(x: number, y: number): Polygon;
+    setPathLength(pathLength: number): Polygon;
+    setBorder(color: string | GradientElement, width?: number, opacity?: number, linecap?: "butt" | "round" | "square", linejoin?: "miter" | "round" | "bevel"): Polygon;
+    setBorderDashing(...values: number[]): Polygon;
+    setFill(color: string | GradientElement, opacity?: number, fillrule?: "nonzero" | "evenodd"): Polygon;
+    highestHeight(): number;
+    highestWidth(): number;
+    toXML(): string;
+}
+export declare class Polyline extends GraphicalElement {
+    private points;
+    private pathLength;
+    private strokeFill;
+    constructor(x1: number, y1: number, x2: number, y2: number);
+    useFilter(filter: FilterContainer, canvas: Canvas): Polyline;
+    setId(id: string): Polyline;
+    addPoint(x: number, y: number): Polyline;
+    setPathLength(pathLength: number): Polyline;
+    setBorder(color: string | GradientElement, width?: number, opacity?: number, linecap?: "butt" | "round" | "square", linejoin?: "miter" | "round" | "bevel"): Polyline;
+    setBorderDashing(...values: number[]): Polyline;
+    setFill(color: string | GradientElement, opacity?: number, fillrule?: "nonzero" | "evenodd"): Polyline;
+    highestHeight(): number;
+    highestWidth(): number;
+    toXML(): string;
+}
+export declare class Path extends GraphicalElement {
+    private d;
+    private pathLength;
+    private strokeFill;
+    constructor(startX: number, startY: number);
+    useFilter(filter: FilterContainer, canvas: Canvas): Path;
+    setId(id: string): Path;
+    moveTo(x: number, y: number, relative?: boolean): Path;
+    lineTo(x: number, y: number, relative?: boolean): Path;
+    horizontalLineTo(x: number, relative?: boolean): Path;
+    verticalLineTo(y: number, relative?: boolean): Path;
+    closePath(): Path;
+    cubicCurve(ctrlStartX: number, ctrlStartY: number, ctrlEndX1: number, ctrlEndY1: number, ctrlEndX2: number, ctrlEndY2: number, relative?: boolean): Path;
+    shortcutCubicCurve(ctrlEndX1: number, ctrlEndY1: number, ctrlEndX2: number, ctrlEndY2: number, relative?: boolean): Path;
+    quadraticCurve(ctrlEndX1: number, ctrlEndY1: number, ctrlEndX2: number, ctrlEndY2: number, relative?: boolean): Path;
+    shortcutQuadraticCurve(ctrlEndX2: number, ctrlEndY2: number, relative?: boolean): Path;
+    arc(radiusX: number, radiusY: number, rotationX: number, ctrlEndX: number, ctrlEndY: number, largeArcFlag?: boolean, sweepFlag?: boolean, relative?: boolean): Path;
+    setBorder(color: string | GradientElement, width?: number, opacity?: number, linecap?: "butt" | "round" | "square", linejoin?: "miter" | "round" | "bevel"): Path;
+    setBorderDashing(...values: number[]): Path;
+    setFill(color: string | GradientElement, opacity?: number, fillrule?: "nonzero" | "evenodd"): Path;
+    highestHeight(): number;
+    highestWidth(): number;
+    toXML(): string;
+}
+export declare class Text extends GraphicalElement {
+    private x;
+    private y;
+    private dx;
+    private dy;
+    private rotate;
+    private lengthAdjust;
+    private mainline;
+    private sublines;
+    private textLength;
+    private strokeFill;
+    constructor(startX: number, startY: number, text: string);
+    useFilter(filter: FilterContainer, canvas: Canvas): Text;
+    setId(id: string): Text;
+    addTextLine(text: Text): Text;
+    setStartX(x: number): Text;
+    setStartY(y: number): Text;
+    setRelativeX(dx: number): Text;
+    setRelativeY(dy: number): Text;
+    setRotation(...values: number[]): Text;
+    setLengthAdjustment(lengthAdjust: "spacing" | "spacingAndGlyphs"): Text;
+    setBorder(color: string | GradientElement, width?: number, opacity?: number, linecap?: "butt" | "round" | "square", linejoin?: "miter" | "round" | "bevel"): Text;
+    setBorderDashing(...values: number[]): Text;
+    setFill(color: string | GradientElement, opacity?: number, fillrule?: "nonzero" | "evenodd"): Text;
+    setTextLength(textLength: number): Text;
+    highestHeight(): number;
+    highestWidth(): number;
+    private metaXML;
+    toXML(): string[];
+}
+export declare class Image extends GraphicalElement {
+    private width;
+    private height;
+    private x;
+    private y;
+    private xlink_href;
+    private preserveAspectRatio;
+    constructor(url: string, width: number, height: number);
+    useFilter(filter: FilterContainer, canvas: Canvas): Image;
+    setId(id: string): Image;
+    setX(x: number): Image;
+    setY(y: number): Image;
+    setWidth(width: number): Image;
+    setHeight(height: number): Image;
+    setAspectRatioPreservation(alignment: "none" | "xMinYMin" | "xMidYMin" | "xMaxYMin" | "xMinYMid" | "xMidYMid" | "xMaxYMid" | "xMinYMax" | "xMidYMax" | "xMaxYMax", strategy?: "meet" | "slice"): Image;
+    highestHeight(): number;
+    highestWidth(): number;
+    toXML(): string;
+}
